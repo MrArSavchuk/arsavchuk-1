@@ -1,18 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import "./Gallery.css";
 
-/** В vite корректно работать со статикой из /src/assets
- *  проще всего через new URL(..., import.meta.url).href
- */
 const IMG = {
   table1: new URL("../assets/TableTime.png", import.meta.url).href,
   table2: new URL("../assets/TableTime2.png", import.meta.url).href,
-  cine1:  new URL("../assets/Cinescope_pht.png", import.meta.url).href,
-  cine2:  new URL("../assets/Cinescope_pht2.png", import.meta.url).href,
-  fin1:   new URL("../assets/fintrack_pht.png", import.meta.url).href,
-  fin2:   new URL("../assets/fintrack_pht2.png", import.meta.url).href,
-  dish1:  new URL("../assets/Choose_You_Dish_pht.png", import.meta.url).href,
-  dish2:  new URL("../assets/Choose_You_Dish_pht2.png", import.meta.url).href,
+  cine1: new URL("../assets/Cinescope_pht.png", import.meta.url).href,
+  cine2: new URL("../assets/Cinescope_pht2.png", import.meta.url).href,
+  fin1: new URL("../assets/fintrack_pht.png", import.meta.url).href,
+  fin2: new URL("../assets/fintrack_pht2.png", import.meta.url).href,
+  dish1: new URL("../assets/Choose_You_Dish_pht.png", import.meta.url).href,
+  dish2: new URL("../assets/Choose_You_Dish_pht2.png", import.meta.url).href,
 };
 
 const projects = [
@@ -120,7 +117,6 @@ function Carousel({ items, intervalMs = 3500 }) {
         <div className="car-track" style={{ transform: `translateX(-${i * 100}%)` }}>
           {items.map((p) => (
             <div className="car-slide" key={p.key}>
-              {/* теперь используем реальную первую картинку проекта */}
               <div className="hero" style={{
                 backgroundImage: `url(${p.img[0]})`,
                 backgroundSize: "cover",
@@ -165,7 +161,6 @@ export default function Gallery() {
         {projects.map((p) => (
           <article className="card hover-lift" key={p.key}>
             <div className="card-cover" style={{ background: `linear-gradient(135deg, ${p.color}, #fbeec1)` }}>
-              {/* flip: фронт и бэк */}
               <div className="flip-wrap">
                 <div className="face front">
                   <img src={p.img[0]} alt={`${p.title} – screenshot 1`} />
