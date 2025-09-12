@@ -20,7 +20,6 @@
 .hero-title{ margin:.2rem 0; line-height:1.2; }
 .hero-note{ font-size:.9rem; opacity:.75; }
 
-/* Автоплей-кнопки и точки */
 .car-arrow{
   position:absolute; top:50%; transform:translateY(-50%);
   width:42px; height:42px; border:none; border-radius:50%;
@@ -59,23 +58,48 @@
 }
 @media (max-width: 700px){ .card{ grid-template-columns:1fr; } }
 
-/* Ховер-эффекты */
 .hover-lift:hover{
   transform: translateY(-4px);
   box-shadow: 0 10px 24px rgba(0,0,0,.12);
 }
-.hover-zoom{ transition: transform .5s ease, box-shadow .5s ease; }
-.hover-zoom:hover{ transform: scale(1.03); box-shadow: inset 0 0 0 9999px rgba(0,0,0,.03); }
 
+/* ----- flip-эффект для обложки ----- */
 .card-cover{
-  border-radius:10px; min-height:160px; position:relative; overflow:hidden;
-  display:flex; align-items:flex-end; padding:12px; color:#1b1f23; font-weight:700;
+  position: relative;
+  border-radius:10px;
+  min-height:160px;
+  overflow:hidden;
+  display:flex;
+  align-items:flex-end;
+  padding:12px;
+  color:#1b1f23;
+  font-weight:700;
+  background:#e8e3cf;
+  perspective: 1000px;          /* <- перспектива для 3D */
 }
-.cover-title{ background:rgba(255,255,255,.7); padding:6px 10px; border-radius:8px; }
 
-/* Если будешь использовать <img> внутри .card-cover */
-.cover-img{ width:100%; height:100%; object-fit:cover; position:absolute; inset:0; }
-.card-cover:hover .cover-img{ transform: scale(1.06); transition: transform .6s ease; }
+.flip-wrap{
+  position:absolute;
+  inset:0;
+  transform-style: preserve-3d;
+  transition: transform .6s ease;
+}
+.card-cover:hover .flip-wrap{ transform: rotateY(180deg); }
+
+.face{
+  position:absolute; inset:0;
+  backface-visibility: hidden;
+}
+.face img{ width:100%; height:100%; object-fit: cover; }
+.face.back{ transform: rotateY(180deg); }
+
+.cover-title{
+  position: relative;
+  z-index: 2;
+  background:rgba(255,255,255,.78);
+  padding:6px 10px;
+  border-radius:8px;
+}
 
 .card-title{ margin:0 0 4px 0; }
 .card-desc{ margin:0 0 10px 0; opacity:.9; }
@@ -95,9 +119,9 @@
 }
 .card-links a:hover{ filter:brightness(1.05); transform:translateY(-1px); }
 
-/* Уважение prefers-reduced-motion */
+/* motion respect */
 @media (prefers-reduced-motion: reduce) {
-  .car-track, .hero, .hover-zoom, .hover-lift, .card-cover .cover-img {
+  .car-track, .hero, .flip-wrap, .card-cover, .hover-lift {
     transition: none !important;
   }
 }

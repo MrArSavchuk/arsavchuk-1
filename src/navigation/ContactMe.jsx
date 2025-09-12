@@ -48,7 +48,7 @@ function ContactMe() {
     const EMAIL = "artem_savchuk@icloud.com";
     const PHONE = "+1 (347) 330-0344";
     const CITY = "Erie, PA";
-    const RESUME_URL = "/resume/Artem_Savchuk_Resume.doc";
+    const RESUME_URL = "/Artem_Savchuk_Resume.doc";
 
     const [copied, setCopied] = useState({ email: false, phone: false });
 
@@ -59,7 +59,6 @@ function ContactMe() {
         });
     };
 
-    // Reveal-on-scroll animation (adds .show to .reveal elements)
     useEffect(() => {
         const io = new IntersectionObserver(
             (entries) => entries.forEach((e) => e.isIntersecting && e.target.classList.add("show")),

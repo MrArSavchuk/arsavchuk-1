@@ -1,6 +1,19 @@
-// /src/Gallery.jsx (EN)
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./Gallery.css";
+
+/** В vite корректно работать со статикой из /src/assets
+ *  проще всего через new URL(..., import.meta.url).href
+ */
+const IMG = {
+  table1: new URL("../assets/TableTime.png", import.meta.url).href,
+  table2: new URL("../assets/TableTime2.png", import.meta.url).href,
+  cine1:  new URL("../assets/Cinescope_pht.png", import.meta.url).href,
+  cine2:  new URL("../assets/Cinescope_pht2.png", import.meta.url).href,
+  fin1:   new URL("../assets/fintrack_pht.png", import.meta.url).href,
+  fin2:   new URL("../assets/fintrack_pht2.png", import.meta.url).href,
+  dish1:  new URL("../assets/Choose_You_Dish_pht.png", import.meta.url).href,
+  dish2:  new URL("../assets/Choose_You_Dish_pht2.png", import.meta.url).href,
+};
 
 const projects = [
   {
@@ -13,7 +26,8 @@ const projects = [
       "Booking confirmation (mock API)",
       "Dark / Light theme",
     ],
-    links: { live: "#", github: "#" },
+    links: { live: "https://tabletime123.netlify.app", github: "https://github.com/MrArSavchuk/TableTime" },
+    img: [IMG.table1, IMG.table2],
     tech: ["React", "CSS Modules", "React Hook Form", "Mock API"],
     color: "#A56C53",
   },
@@ -22,30 +36,11 @@ const projects = [
     title: "CineScope — Movies & TV Search",
     tagline: "Search movies & shows",
     desc: "Find movies by title or genre with ratings, posters, and overviews.",
-    features: ["TheMovieDB API", "Pagination & Infinite Scroll", "Genre filters"],
-    links: { live: "#", github: "#" },
+    features: ["TheMovieDB API", "Genre filters"],
+    links: { live: "https://cinemascope123.netlify.app", github: "https://github.com/MrArSavchuk/Cinemascope" },
+    img: [IMG.cine1, IMG.cine2],
     tech: ["React", "Axios", "Styled Components", "TMDB API"],
     color: "#3B82F6",
-  },
-  {
-    key: "tripmate",
-    title: "TripMate — Travel Planner",
-    tagline: "Plan trips on a map",
-    desc: "Plan trip routes with landmarks displayed on the map.",
-    features: ["Google Maps API", "Save routes to localStorage", "Mobile friendly"],
-    links: { live: "#", github: "#" },
-    tech: ["React", "CSS", "Google Maps API"],
-    color: "#10B981",
-  },
-  {
-    key: "coffeeguide",
-    title: "CoffeeGuide — Coffee Shop Catalog",
-    tagline: "Find coffee near you",
-    desc: "Interactive coffee shop map with photos, reviews, and menus.",
-    features: ["Sort by rating", "“Near me” via Geolocation", "Map (Leaflet)"],
-    links: { live: "#", github: "#" },
-    tech: ["React", "Leaflet", "CSS", "Geolocation API"],
-    color: "#8B5CF6",
   },
   {
     key: "fintrack",
@@ -53,28 +48,20 @@ const projects = [
     tagline: "Track income & spend",
     desc: "Track income and expenses with interactive charts and categories.",
     features: ["Chart.js visualizations", "LocalStorage persistence", "Live balance"],
-    links: { live: "#", github: "#" },
-    tech: ["React", "Chart.js", "Tailwind CSS"],
+    links: { live: "https://fin-track123.netlify.app", github: "https://github.com/MrArSavchuk/fintrack" },
+    img: [IMG.fin1, IMG.fin2],
+    tech: ["React", "Chart.js", "CSS"],
     color: "#F59E0B",
   },
   {
-    key: "resumeforge",
-    title: "ResumeForge — Resume Generator",
-    tagline: "Design & export to PDF",
-    desc: "Online resume builder with design customization and PDF export.",
-    features: ["Drag-and-drop blocks", "Color themes", "PDF via react-pdf"],
-    links: { live: "#", github: "#" },
-    tech: ["React", "react-pdf", "CSS"],
-    color: "#EF4444",
-  },
-  {
     key: "recipehub",
-    title: "RecipeHub — Mini Recipe Social",
-    tagline: "Share & discover recipes",
-    desc: "Publish and share recipes with photos and tags.",
-    features: ["Photo upload (Cloudinary)", "Likes & comments", "Ingredient search"],
-    links: { live: "#", github: "#" },
-    tech: ["React", "Firebase", "Tailwind CSS"],
+    title: "Choose You Dish — Personalized Recipe & Meal Finder",
+    tagline: "Find & discover recipes",
+    desc: "Find and discover recipes with photos and tags.",
+    features: ["React", "Booking confirmation (mock API)", "Ingredient search"],
+    links: { live: "https://chooseyoudish.netlify.app", github: "https://github.com/MrArSavchuk/Choose_Your_Dish" },
+    img: [IMG.dish1, IMG.dish2],
+    tech: ["React", "React Hook Form", "CSS", "API"],
     color: "#06B6D4",
   },
 ];
@@ -86,7 +73,6 @@ function Carousel({ items, intervalMs = 3500 }) {
   const prev = () => setI((p) => (p === 0 ? items.length - 1 : p - 1));
   const next = () => setI((p) => (p + 1) % items.length);
 
-  // Autoplay with pause on tab hidden
   useEffect(() => {
     const tick = () => { if (!pausedRef.current) next(); };
     const id = setInterval(tick, intervalMs);
@@ -98,10 +84,8 @@ function Carousel({ items, intervalMs = 3500 }) {
     };
   }, [intervalMs]);
 
-  // Pause on hover/focus
   const setPaused = (v) => (pausedRef.current = v);
 
-  // Keyboard navigation ← / →
   useEffect(() => {
     const onKey = (e) => {
       if (e.key === "ArrowLeft") prev();
@@ -111,7 +95,6 @@ function Carousel({ items, intervalMs = 3500 }) {
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
-  // Touch swipe
   const startX = useRef(null);
   const onTouchStart = (e) => { startX.current = e.touches[0].clientX; };
   const onTouchEnd = (e) => {
@@ -137,11 +120,15 @@ function Carousel({ items, intervalMs = 3500 }) {
         <div className="car-track" style={{ transform: `translateX(-${i * 100}%)` }}>
           {items.map((p) => (
             <div className="car-slide" key={p.key}>
-              {/* Placeholder “title screenshot”. Replace with <img src={p.img} .../> later */}
-              <div className="hero hover-zoom" style={{ background: `linear-gradient(135deg, ${p.color}, #fbeec1)` }}>
+              {/* теперь используем реальную первую картинку проекта */}
+              <div className="hero" style={{
+                backgroundImage: `url(${p.img[0]})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center"
+              }}>
                 <span className="hero-kicker">{p.tagline}</span>
                 <h3 className="hero-title">{p.title}</h3>
-                <span className="hero-note">Screenshot coming soon</span>
+                <span className="hero-note">Swipe / click arrows</span>
               </div>
             </div>
           ))}
@@ -168,8 +155,8 @@ export default function Gallery() {
   return (
     <main className="page">
       <header className="gal-head">
-        <h1 className="gal-title">Gallery</h1>
-        <p className="gal-sub">Selected projects — screenshots coming soon; features are ready.</p>
+        <h1 className="gal-title">Portfolio</h1>
+        <p className="gal-sub">Selected works — portfolio available; features ready to view</p>
       </header>
 
       <Carousel items={projects} />
@@ -177,9 +164,17 @@ export default function Gallery() {
       <section className="cards">
         {projects.map((p) => (
           <article className="card hover-lift" key={p.key}>
-            <div className="card-cover hover-zoom" style={{ background: `linear-gradient(135deg, ${p.color}, #fbeec1)` }}>
-              {/* For real screenshots later:
-                 <img src={p.img} alt={p.title} className="cover-img" /> */}
+            <div className="card-cover" style={{ background: `linear-gradient(135deg, ${p.color}, #fbeec1)` }}>
+              {/* flip: фронт и бэк */}
+              <div className="flip-wrap">
+                <div className="face front">
+                  <img src={p.img[0]} alt={`${p.title} – screenshot 1`} />
+                </div>
+                <div className="face back">
+                  <img src={p.img[1]} alt={`${p.title} – screenshot 2`} />
+                </div>
+              </div>
+
               <span className="cover-title">{p.title}</span>
             </div>
 
