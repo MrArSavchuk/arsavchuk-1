@@ -1,0 +1,254 @@
+/* Layout */
+.contact-page {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 24px;
+}
+
+.contact-header h1 {
+    margin: 0 0 6px 0;
+}
+
+.subtitle {
+    margin: 0 0 24px 0;
+    opacity: .85;
+}
+
+/* Grid */
+.contact-wrap {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 24px;
+}
+
+@media (max-width: 900px) {
+    .contact-wrap {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Contact cards */
+.contact-cards {
+    display: grid;
+    gap: 14px;
+    align-content: start;
+}
+
+.c-card {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    gap: 12px;
+    padding: 14px;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, .06);
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.c-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, .12);
+}
+
+.c-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: #fff;
+    background: linear-gradient(135deg, #659DBD, #DAAD86);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, .12);
+    animation: pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.c-body h3 {
+    margin: 0 0 4px 0;
+    font-size: 1rem;
+}
+
+.c-link,
+.c-text {
+    margin: 0;
+    color: #2b3a45;
+    text-decoration: none;
+}
+
+.c-link:hover {
+    text-decoration: underline;
+}
+
+.c-actions {
+    margin-top: 6px;
+}
+
+.tiny {
+    font-size: .8rem;
+    padding: 6px 10px;
+    border-radius: 8px;
+    border: 1px solid #e1e6ea;
+    background: #f8fafc;
+    cursor: pointer;
+}
+
+.tiny:hover {
+    background: #eef2f6;
+}
+
+/* Resume button */
+.download {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 4px;
+    text-decoration: none;
+}
+
+/* Form */
+.contact-form {
+    padding: 16px;
+    border-radius: 14px;
+    background: linear-gradient(180deg, #F7EDCB, #FBEEC1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .08);
+}
+
+form {
+    display: grid;
+    gap: 14px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+@media (max-width: 700px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.field label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+.input,
+.textarea {
+    width: 80%;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1.5px solid #e1d9bc;
+    background: #fff;
+    outline: none;
+    transition: border-color .15s ease, box-shadow .15s ease;
+    font-size: 0.98rem;
+}
+
+.input:focus,
+.textarea:focus {
+    border-color: #659DBD;
+    box-shadow: 0 0 0 3px rgba(101, 157, 189, .18);
+}
+
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    background: #659DBD;
+    color: #fff;
+    font-weight: 600;
+    transition: transform .15s ease, filter .15s ease;
+    text-decoration: none;
+    margin: 15px;
+}
+
+.btn:hover {
+    filter: brightness(1.05);
+    transform: translateY(-1px);
+}
+
+.btn:disabled {
+    opacity: .7;
+    cursor: not-allowed;
+}
+
+.btn-ghost {
+    background: #fff;
+    color: #2b3a45;
+    border: 1.5px solid #e1e6ea;
+}
+
+.btn-ghost:hover {
+    background: #f6f8fa;
+}
+
+/* Reveal on scroll */
+.reveal {
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity .5s ease, transform .5s ease;
+}
+
+.reveal.show {
+    opacity: 1;
+    transform: none;
+}
+
+/* Success state */
+.success-box {
+    margin: 60px auto;
+    max-width: 640px;
+    background: #fff;
+    border-radius: 14px;
+    padding: 28px;
+    text-align: center;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, .12);
+}
+
+.success-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    margin: 0 auto 10px;
+    display: grid;
+    place-items: center;
+    background: #10B981;
+    color: #fff;
+}
+
+.success h1 {
+    margin: 8px 0;
+}
+
+.success-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 12px;
+}
+
+@media (max-width: 520px) {
+    .success-actions {
+        flex-direction: column;
+    }
+}
