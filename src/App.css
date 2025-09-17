@@ -169,11 +169,20 @@ img {
   }
 }
 
+/* ===== Experience section (tuned to navbar gradient) ===== */
+
 :root {
-  --exp-accent: #659DBD;
-  --exp-accent-2: #DAAD86;
+  /* Palette aligned to your navbar gradient */
+  --nav-cool: #659DBD;   /* top of navbar gradient */
+  --nav-warm: #FBEEC1;   /* bottom of navbar gradient / page bg */
+  --nav-accent: #DAAD86; /* warm accent (hover in navbar) */
+
+  /* Experience tokens */
+  --exp-accent: var(--nav-cool);
+  --exp-accent-2: var(--nav-accent);
   --exp-border: rgba(0, 0, 0, 0.12);
   --exp-card-bg: #ffffff;
+  --exp-card-bg-soft: #fffaf0; /* tiny warm tint for subtle gradient fill */
 }
 
 .exp-section {
@@ -207,40 +216,81 @@ img {
   max-width: 72ch;
 }
 
+/* Timeline spine softened for the warm page background */
 .exp-timeline {
   margin-top: 24px;
-  border-left: 2px solid var(--exp-border);
+  position: relative;
+  padding-left: 18px; /* room for dot */
 }
 
+/* Gradient spine to echo navbar (instead of plain border-left) */
+.exp-timeline::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--nav-cool), color-mix(in oklab, var(--nav-cool) 10%, var(--nav-warm) 90%));
+  opacity: 0.35;
+}
+
+/* Spacing between blocks */
 .exp-item {
   position: relative;
-  margin-left: 20px;
+  margin: 0 0 16px 0;      /* <— space between cards */
   padding: 16px 12px 16px 12px;
 }
 
+/* The dot (sits on the spine) */
 .exp-dot {
   position: absolute;
-  left: -6px;
+  left: -2px;
   top: 26px;
   width: 10px;
   height: 10px;
   border-radius: 999px;
   background: var(--exp-accent);
-  box-shadow: 0 0 0 4px rgba(101, 157, 189, 0.25);
+  box-shadow:
+    0 0 0 4px color-mix(in oklab, var(--nav-cool) 25%, transparent),
+    0 0 0 0 color-mix(in oklab, var(--nav-accent) 0%, transparent); /* animated ring target */
+  transform: translateZ(0);
+  transition: transform 180ms ease, box-shadow 260ms ease;
 }
 
+/* Card with dual-tone shadow that nods to navbar gradient */
 .exp-card {
-  background: var(--exp-card-bg);
+  background:
+    linear-gradient(180deg, var(--exp-card-bg) 0%, var(--exp-card-bg-soft) 100%);
   border: 1px solid var(--exp-border);
   border-radius: 14px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
-  transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+  box-shadow:
+    0 3px 10px rgba(0, 0, 0, 0.06),
+    0 2px 8px color-mix(in oklab, var(--nav-warm) 20%, transparent),
+    0 1px 4px color-mix(in oklab, var(--nav-cool) 18%, transparent);
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    background 220ms ease;
+  will-change: transform, box-shadow;
 }
 
 .exp-card:hover {
   transform: translateY(-2px);
-  border-color: var(--exp-accent-2);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  border-color: color-mix(in oklab, var(--exp-accent) 50%, var(--exp-accent-2) 50%);
+  box-shadow:
+    0 10px 26px rgba(0, 0, 0, 0.12),
+    0 8px 20px color-mix(in oklab, var(--nav-warm) 28%, transparent),
+    0 6px 14px color-mix(in oklab, var(--nav-cool) 26%, transparent);
+}
+
+/* Micro glow animation on the timeline dot when card is hovered */
+.exp-card:hover .exp-dot {
+  transform: scale(1.08);
+  box-shadow:
+    0 0 0 6px color-mix(in oklab, var(--nav-cool) 30%, transparent),
+    0 0 16px 2px color-mix(in oklab, var(--nav-accent) 40%, transparent);
 }
 
 .exp-card-title {
@@ -276,6 +326,7 @@ img {
   margin-top: 10px;
 }
 
+/* Reveal on scroll */
 .reveal {
   opacity: 0;
   transform: translateY(8px);
@@ -287,6 +338,7 @@ img {
   transform: translateY(0);
 }
 
+/* Motion safety */
 @media (prefers-reduced-motion: reduce) {
   .accent-underline {
     transition: none;
@@ -296,5 +348,15 @@ img {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+  .exp-card,
+  .exp-card:hover {
+    transition: none;
+    transform: none;
+  }
+  .exp-card:hover .exp-dot {
+    transform: none;
+    box-shadow:
+      0 0 0 4px color-mix(in oklab, var(--nav-cool) 25%, transparent);
   }
 }
