@@ -168,3 +168,133 @@ img {
     padding: 14px 16px;
   }
 }
+
+:root {
+  --exp-accent: #659DBD;
+  --exp-accent-2: #DAAD86;
+  --exp-border: rgba(0, 0, 0, 0.12);
+  --exp-card-bg: #ffffff;
+}
+
+.exp-section {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 24px;
+}
+
+.exp-title {
+  font-size: clamp(2rem, 3vw, 2.5rem);
+  line-height: 1.15;
+  margin: 0 0 8px 0;
+  letter-spacing: 0.2px;
+}
+
+.accent-underline {
+  background-image: linear-gradient(transparent calc(100% - 3px), var(--exp-accent) 3px);
+  background-size: 0% 100%;
+  background-repeat: no-repeat;
+  transition: background-size 600ms ease;
+}
+
+.reveal.in-view .accent-underline,
+.exp-title:hover .accent-underline {
+  background-size: 100% 100%;
+}
+
+.exp-lead {
+  opacity: 0.9;
+  margin: 8px 0 0 0;
+  max-width: 72ch;
+}
+
+.exp-timeline {
+  margin-top: 24px;
+  border-left: 2px solid var(--exp-border);
+}
+
+.exp-item {
+  position: relative;
+  margin-left: 20px;
+  padding: 16px 12px 16px 12px;
+}
+
+.exp-dot {
+  position: absolute;
+  left: -6px;
+  top: 26px;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--exp-accent);
+  box-shadow: 0 0 0 4px rgba(101, 157, 189, 0.25);
+}
+
+.exp-card {
+  background: var(--exp-card-bg);
+  border: 1px solid var(--exp-border);
+  border-radius: 14px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+  transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+}
+
+.exp-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--exp-accent-2);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.exp-card-title {
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  margin: 0 0 6px 0;
+  font-weight: 700;
+}
+
+.exp-company {
+  color: var(--exp-accent);
+}
+
+.exp-meta {
+  font-size: 0.95rem;
+  opacity: 0.85;
+  margin-bottom: 8px;
+}
+
+.exp-list {
+  padding-left: 18px;
+  margin: 8px 0 0 0;
+  display: grid;
+  gap: 6px;
+}
+
+.exp-subheading {
+  font-size: clamp(1.1rem, 1.8vw, 1.25rem);
+  margin: 20px 0 6px 0;
+  font-weight: 700;
+}
+
+.exp-today {
+  margin-top: 10px;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 600ms ease, transform 600ms ease;
+}
+
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .accent-underline {
+    transition: none;
+    background-size: 100% 100%;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
