@@ -170,7 +170,6 @@ img {
 }
 
 /* ===== Experience section  ===== */
-
 :root {
   --nav-cool: #659DBD;
   --nav-warm: #FBEEC1;
@@ -179,7 +178,7 @@ img {
   --exp-accent-2: var(--nav-accent);
   --exp-border: rgba(0, 0, 0, 0.12);
   --exp-card-bg: #ffffff;
-  --exp-card-bg-soft: #fffaf0; 
+  --exp-card-bg-soft: #fffaf0;
 }
 
 .exp-section {
@@ -187,7 +186,7 @@ img {
   margin: 64px auto;
   padding: 0 24px;
 
-  font-size: 16px;          
+  font-size: 16px;
   line-height: 1.6;
   text-align: left;
   -webkit-hyphens: manual;
@@ -198,7 +197,7 @@ img {
 
 .exp-title {
   font-family: "Libertinus Serif Display", system-ui;
-  font-size: 32px;         
+  font-size: 32px;
   line-height: 1.2;
   margin: 0 0 16px 0;
   letter-spacing: 0.2px;
@@ -213,8 +212,9 @@ img {
 .exp-timeline {
   margin-top: 28px;
   position: relative;
-  padding-left: 22px;      
+  padding-left: 22px;
 }
+
 .exp-timeline::before {
   content: "";
   position: absolute;
@@ -222,11 +222,9 @@ img {
   top: 0;
   bottom: 0;
   width: 2px;
-  background: linear-gradient(
-    to bottom,
-    var(--nav-cool),
-    color-mix(in oklab, var(--nav-cool) 10%, var(--nav-warm) 90%)
-  );
+  background: linear-gradient(to bottom,
+      var(--nav-cool),
+      color-mix(in oklab, var(--nav-cool) 10%, var(--nav-warm) 90%));
   opacity: 0.35;
 }
 
@@ -268,6 +266,7 @@ img {
   will-change: transform, box-shadow;
   text-align: left;
 }
+
 .exp-card:hover {
   transform: translateY(-2px);
   border-color: color-mix(in oklab, var(--exp-accent) 50%, var(--exp-accent-2) 50%);
@@ -283,6 +282,7 @@ img {
     0 0 0 6px color-mix(in oklab, var(--nav-cool) 30%, transparent),
     0 0 16px 2px color-mix(in oklab, var(--nav-accent) 40%, transparent);
 }
+
 @supports selector(.exp-item:has(.exp-card:hover)) {
   .exp-item:has(.exp-card:hover) .exp-dot {
     transform: scale(1.08);
@@ -297,14 +297,17 @@ img {
   font-weight: 700;
   line-height: 1.35;
 }
+
 .exp-icon {
   display: inline-block;
   margin-right: 8px;
   transform: translateY(1px);
 }
+
 .exp-company {
   color: var(--exp-accent);
 }
+
 .exp-meta {
   opacity: 0.9;
   margin-bottom: 10px;
@@ -317,6 +320,7 @@ img {
   display: grid;
   gap: 6px;
 }
+
 .exp-list li {
   line-height: 1.6;
   text-align: left;
@@ -331,6 +335,7 @@ img {
   margin: 28px 0 8px 0;
   font-weight: 700;
 }
+
 .exp-callout {
   margin: 18px 0 0 0;
   padding: 16px 18px;
@@ -348,6 +353,7 @@ img {
   transform: translateY(8px);
   transition: opacity 600ms ease, transform 600ms ease;
 }
+
 .reveal.in-view {
   opacity: 1;
   transform: translateY(0);
@@ -359,6 +365,7 @@ img {
     transform: none;
     transition: none;
   }
+
   .exp-item:hover .exp-dot,
   .exp-item:has(.exp-card:hover) .exp-dot {
     transition: none;
@@ -367,7 +374,7 @@ img {
   }
 }
 
-.exp-header { 
+.exp-header {
   font-size: 16px;
   line-height: 1.6;
 }
@@ -375,7 +382,7 @@ img {
 .exp-lead {
   font-size: 16px;
   line-height: 1.6;
-  max-width: none;   
+  max-width: none;
   text-align: left;
 }
 
@@ -393,23 +400,24 @@ img {
   font-size: 32px;
   line-height: 1.2;
 }
+
 .exp-callout {
-  margin: 24px 0 0 0;  
-  padding: 0;           
+  margin: 24px 0 0 0;
+  padding: 0;
   background: transparent;
-  border: none;         
-  box-shadow: none;     
+  border: none;
+  box-shadow: none;
 }
 
 .exp-callout blockquote {
-  margin: 0;            
+  margin: 0;
   padding: 0;
 }
 
 .exp-callout p {
-  font-size: 16px;     
+  font-size: 16px;
   line-height: 1.6;
-  font-style: italic;  
-  color: inherit;      
-  text-align: left;    
+  font-style: italic;
+  color: inherit;
+  text-align: left;
 }

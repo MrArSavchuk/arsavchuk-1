@@ -8,6 +8,11 @@ import icon_mail from "../assets/icon_mail.jpg";
 import icon_education from "../assets/icon_education.png";
 import icon_cv from "../assets/icon_cv.png";
 
+// ✨ новые импорты изображений для модалки
+import diplomImg from "../assets/diplom.png";
+import certificateHtmlImg from "../assets/sertificatehtml.png";
+import placeholderImg from "../assets/placeholder.png";
+
 function FirstPage() {
   const [showCerts, setShowCerts] = useState(false);
   const closeBtnRef = useRef(null);
@@ -21,12 +26,40 @@ function FirstPage() {
     return () => document.removeEventListener("keydown", onKey);
   }, [showCerts]);
 
-  // Placeholder certificate data (replace later with real ones)
+  // ✅ Теперь у каждого сертификата есть img и alt
   const certs = [
-    { id: 1, title: "Frontend Basics", meta: "Coursera · 2024", info: "HTML/CSS/JS fundamentals" },
-    { id: 2, title: "React Essentials", meta: "Udemy · 2024", info: "Hooks, Router, state patterns" },
-    { id: 3, title: "TypeScript for React", meta: "Educative · 2025", info: "Types, generics, props models" },
-    { id: 4, title: "Node.js Foundations", meta: "Codecademy · 2025", info: "REST, Express basics" },
+    {
+      id: 1,
+      title: "M.Sc. in Finance",
+      meta: "Northern State Medical University",
+      info: "Thesis: Evaluation of Enterprise Investment Project Performance",
+      img: diplomImg,
+      alt: "Diploma",
+    },
+    {
+      id: 2,
+      title: "Front-end Web Development",
+      meta: "Montreal, Canada",
+      info: "HTML5, CSS3, JavaScript",
+      img: certificateHtmlImg,
+      alt: "Front-end Certificate",
+    },
+    {
+      id: 3,
+      title: "...",
+      meta: "Stand by",
+      info: "Coming soon",
+      img: placeholderImg,
+      alt: "Placeholder certificate",
+    },
+    {
+      id: 4,
+      title: "...",
+      meta: "Stand by",
+      info: "Coming soon",
+      img: placeholderImg,
+      alt: "Placeholder certificate",
+    },
   ];
 
   return (
@@ -56,7 +89,12 @@ function FirstPage() {
           </a>
 
           {/* GitHub */}
-          <a href="https://github.com/MrArSavchuk" target="_blank" rel="noopener noreferrer" title="GitHub">
+          <a
+            href="https://github.com/MrArSavchuk"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="GitHub"
+          >
             <img src={icon_github} alt="GitHub" />
           </a>
 
@@ -73,7 +111,6 @@ function FirstPage() {
           </button>
 
           {/* CV → download from /public */}
-          {/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */}
           <a
             href="/Artem_Savchuk_Resume.docx"
             target="_blank"
@@ -83,22 +120,24 @@ function FirstPage() {
             <img src={icon_cv} alt="Download CV (.docx)" />
           </a>
 
-
-
-                    {/* Email */}
+          {/* Email */}
           <a href="mailto:mrarsavchuk@gmail.com" title="Email me">
             <img src={icon_mail} alt="Email" />
           </a>
         </footer>
       </div>
 
-            <div className="block_photo">
-        <img src={image} alt="Photoporfolio" width="400px" />
+      <div className="block_photo">
+        <img src={image} alt="Photoporfolio" width="400" />
       </div>
 
       {/* ===== Modal with certificates ===== */}
       {showCerts && (
-        <div className="modal-overlay" onClick={() => setShowCerts(false)} role="presentation">
+        <div
+          className="modal-overlay"
+          onClick={() => setShowCerts(false)}
+          role="presentation"
+        >
           <div
             className="modal"
             id="certs-modal"
@@ -121,9 +160,14 @@ function FirstPage() {
             <div className="certs-grid">
               {certs.map((c) => (
                 <figure className="cert-card" key={c.id}>
-                  {/* Placeholder box (swap for <img src={c.img} /> later) */}
-                  <div className="cert-thumb placeholder">
-                    <span>Image</span>
+                  {/* 🔁 Был placeholder, теперь полноценное изображение */}
+                  <div className="cert-thumb">
+                    <img
+                      src={c.img}
+                      alt={c.alt}
+                      loading="lazy"
+                      decoding="async"
+                    />
                   </div>
                   <figcaption>
                     <h3>{c.title}</h3>
