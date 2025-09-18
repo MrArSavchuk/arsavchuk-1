@@ -169,20 +169,17 @@ img {
   }
 }
 
-/* ===== Experience section (left-aligned, fixed 32px/16px, tuned to navbar gradient) ===== */
+/* ===== Experience section  ===== */
 
 :root {
-  /* Palette aligned to your navbar gradient */
   --nav-cool: #659DBD;
   --nav-warm: #FBEEC1;
   --nav-accent: #DAAD86;
-
-  /* Experience tokens */
   --exp-accent: var(--nav-cool);
   --exp-accent-2: var(--nav-accent);
   --exp-border: rgba(0, 0, 0, 0.12);
   --exp-card-bg: #ffffff;
-  --exp-card-bg-soft: #fffaf0; /* tiny warm tint for subtle gradient fill */
+  --exp-card-bg-soft: #fffaf0; 
 }
 
 .exp-section {
@@ -190,8 +187,7 @@ img {
   margin: 64px auto;
   padding: 0 24px;
 
-  /* Fixed typography for the whole section */
-  font-size: 16px;           /* all inner text = 16px */
+  font-size: 16px;          
   line-height: 1.6;
   text-align: left;
   -webkit-hyphens: manual;
@@ -200,27 +196,24 @@ img {
   word-break: normal;
 }
 
-/* Title "Experience" = 32px, exact font */
 .exp-title {
   font-family: "Libertinus Serif Display", system-ui;
-  font-size: 32px;           /* exact size */
+  font-size: 32px;         
   line-height: 1.2;
   margin: 0 0 16px 0;
   letter-spacing: 0.2px;
 }
 
-/* Lead paragraphs — full width of the card, no early wrapping */
 .exp-lead {
   opacity: 0.95;
   margin: 10px 0 0 0;
   max-width: none;
 }
 
-/* Timeline wrapper and gradient spine */
 .exp-timeline {
   margin-top: 28px;
   position: relative;
-  padding-left: 22px;        /* room for dot */
+  padding-left: 22px;      
 }
 .exp-timeline::before {
   content: "";
@@ -237,14 +230,12 @@ img {
   opacity: 0.35;
 }
 
-/* Spacing between cards */
 .exp-item {
   position: relative;
   margin: 0 0 24px 0;
   padding-left: 0;
 }
 
-/* The dot on the spine */
 .exp-dot {
   position: absolute;
   left: 3px;
@@ -260,7 +251,6 @@ img {
   transition: transform 180ms ease, box-shadow 260ms ease;
 }
 
-/* Card: light background + soft gradient and dual-tone shadow */
 .exp-card {
   background: linear-gradient(180deg, var(--exp-card-bg) 0%, var(--exp-card-bg-soft) 100%);
   border: 1px solid var(--exp-border);
@@ -287,7 +277,6 @@ img {
     0 6px 14px color-mix(in oklab, var(--nav-cool) 26%, transparent);
 }
 
-/* Micro glow on the dot */
 .exp-item:hover .exp-dot {
   transform: scale(1.08);
   box-shadow:
