@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./FirstPage.css";
 
-import image from "../assets/employee.jpeg";
+import image from "../assets/employee.jpg";
 import icon_github from "../assets/icon_github.png";
 import icon_lin from "../assets/icon_lin.png";
 import icon_mail from "../assets/icon_mail.jpg";
