@@ -169,13 +169,13 @@ img {
   }
 }
 
-/* ===== Experience section (tuned to navbar gradient) ===== */
+/* ===== Experience section (left-aligned, fixed 32px/16px, tuned to navbar gradient) ===== */
 
 :root {
   /* Palette aligned to your navbar gradient */
-  --nav-cool: #659DBD;   /* top of navbar gradient */
-  --nav-warm: #FBEEC1;   /* bottom of navbar gradient / page bg */
-  --nav-accent: #DAAD86; /* warm accent (hover in navbar) */
+  --nav-cool: #659DBD;
+  --nav-warm: #FBEEC1;
+  --nav-accent: #DAAD86;
 
   /* Experience tokens */
   --exp-accent: var(--nav-cool);
@@ -187,95 +187,97 @@ img {
 
 .exp-section {
   max-width: 1100px;
-  margin: 40px auto;
+  margin: 64px auto;
   padding: 0 24px;
+
+  /* Fixed typography for the whole section */
+  font-size: 16px;           /* all inner text = 16px */
+  line-height: 1.6;
+  text-align: left;
+  -webkit-hyphens: manual;
+  hyphens: manual;
+  overflow-wrap: normal;
+  word-break: normal;
 }
 
+/* Title "Experience" = 32px, exact font */
 .exp-title {
-  font-size: clamp(2rem, 3vw, 2.5rem);
-  line-height: 1.15;
-  margin: 0 0 8px 0;
+  font-family: "Libertinus Serif Display", system-ui;
+  font-size: 32px;           /* exact size */
+  line-height: 1.2;
+  margin: 0 0 16px 0;
   letter-spacing: 0.2px;
 }
 
-.accent-underline {
-  background-image: linear-gradient(transparent calc(100% - 3px), var(--exp-accent) 3px);
-  background-size: 0% 100%;
-  background-repeat: no-repeat;
-  transition: background-size 600ms ease;
-}
-
-.reveal.in-view .accent-underline,
-.exp-title:hover .accent-underline {
-  background-size: 100% 100%;
-}
-
+/* Lead paragraphs — full width of the card, no early wrapping */
 .exp-lead {
-  opacity: 0.9;
-  margin: 8px 0 0 0;
-  max-width: 72ch;
+  opacity: 0.95;
+  margin: 10px 0 0 0;
+  max-width: none;
 }
 
-/* Timeline spine softened for the warm page background */
+/* Timeline wrapper and gradient spine */
 .exp-timeline {
-  margin-top: 24px;
+  margin-top: 28px;
   position: relative;
-  padding-left: 18px; /* room for dot */
+  padding-left: 22px;        /* room for dot */
 }
-
-/* Gradient spine to echo navbar (instead of plain border-left) */
 .exp-timeline::before {
   content: "";
   position: absolute;
-  left: 6px;
+  left: 8px;
   top: 0;
   bottom: 0;
   width: 2px;
-  background: linear-gradient(to bottom, var(--nav-cool), color-mix(in oklab, var(--nav-cool) 10%, var(--nav-warm) 90%));
+  background: linear-gradient(
+    to bottom,
+    var(--nav-cool),
+    color-mix(in oklab, var(--nav-cool) 10%, var(--nav-warm) 90%)
+  );
   opacity: 0.35;
 }
 
-/* Spacing between blocks */
+/* Spacing between cards */
 .exp-item {
   position: relative;
-  margin: 0 0 16px 0;      /* <— space between cards */
-  padding: 16px 12px 16px 12px;
+  margin: 0 0 24px 0;
+  padding-left: 0;
 }
 
-/* The dot (sits on the spine) */
+/* The dot on the spine */
 .exp-dot {
   position: absolute;
-  left: -2px;
-  top: 26px;
+  left: 3px;
+  top: 28px;
   width: 10px;
   height: 10px;
   border-radius: 999px;
   background: var(--exp-accent);
   box-shadow:
     0 0 0 4px color-mix(in oklab, var(--nav-cool) 25%, transparent),
-    0 0 0 0 color-mix(in oklab, var(--nav-accent) 0%, transparent); /* animated ring target */
+    0 0 0 0 color-mix(in oklab, var(--nav-accent) 0%, transparent);
   transform: translateZ(0);
   transition: transform 180ms ease, box-shadow 260ms ease;
 }
 
-/* Card with dual-tone shadow that nods to navbar gradient */
+/* Card: light background + soft gradient and dual-tone shadow */
 .exp-card {
-  background:
-    linear-gradient(180deg, var(--exp-card-bg) 0%, var(--exp-card-bg-soft) 100%);
+  background: linear-gradient(180deg, var(--exp-card-bg) 0%, var(--exp-card-bg-soft) 100%);
   border: 1px solid var(--exp-border);
-  border-radius: 14px;
+  border-radius: 16px;
   box-shadow:
     0 3px 10px rgba(0, 0, 0, 0.06),
     0 2px 8px color-mix(in oklab, var(--nav-warm) 20%, transparent),
     0 1px 4px color-mix(in oklab, var(--nav-cool) 18%, transparent);
+  padding: 18px 16px;
   transition:
     transform 220ms ease,
     border-color 220ms ease,
     box-shadow 220ms ease,
     background 220ms ease;
   will-change: transform, box-shadow;
+  text-align: left;
 }
-
 .exp-card:hover {
   transform: translateY(-2px);
   border-color: color-mix(in oklab, var(--exp-accent) 50%, var(--exp-accent-2) 50%);
@@ -285,78 +287,140 @@ img {
     0 6px 14px color-mix(in oklab, var(--nav-cool) 26%, transparent);
 }
 
-/* Micro glow animation on the timeline dot when card is hovered */
-.exp-card:hover .exp-dot {
+/* Micro glow on the dot */
+.exp-item:hover .exp-dot {
   transform: scale(1.08);
   box-shadow:
     0 0 0 6px color-mix(in oklab, var(--nav-cool) 30%, transparent),
     0 0 16px 2px color-mix(in oklab, var(--nav-accent) 40%, transparent);
 }
-
-.exp-card-title {
-  font-size: clamp(1.05rem, 2vw, 1.25rem);
-  margin: 0 0 6px 0;
-  font-weight: 700;
+@supports selector(.exp-item:has(.exp-card:hover)) {
+  .exp-item:has(.exp-card:hover) .exp-dot {
+    transform: scale(1.08);
+    box-shadow:
+      0 0 0 6px color-mix(in oklab, var(--nav-cool) 30%, transparent),
+      0 0 16px 2px color-mix(in oklab, var(--nav-accent) 40%, transparent);
+  }
 }
 
+.exp-card-title {
+  margin: 0 0 8px 0;
+  font-weight: 700;
+  line-height: 1.35;
+}
+.exp-icon {
+  display: inline-block;
+  margin-right: 8px;
+  transform: translateY(1px);
+}
 .exp-company {
   color: var(--exp-accent);
 }
-
 .exp-meta {
-  font-size: 0.95rem;
-  opacity: 0.85;
-  margin-bottom: 8px;
+  opacity: 0.9;
+  margin-bottom: 10px;
 }
 
 .exp-list {
-  padding-left: 18px;
+  list-style: disc outside;
+  padding-left: 22px;
   margin: 8px 0 0 0;
   display: grid;
   gap: 6px;
 }
+.exp-list li {
+  line-height: 1.6;
+  text-align: left;
+}
+
+.num {
+  font-weight: 700;
+  color: var(--exp-accent-2);
+}
 
 .exp-subheading {
-  font-size: clamp(1.1rem, 1.8vw, 1.25rem);
-  margin: 20px 0 6px 0;
+  margin: 28px 0 8px 0;
   font-weight: 700;
 }
-
-.exp-today {
-  margin-top: 10px;
+.exp-callout {
+  margin: 18px 0 0 0;
+  padding: 16px 18px;
+  background: #fff;
+  border: 1px solid var(--exp-border);
+  border-left: 4px solid var(--exp-accent);
+  border-radius: 12px;
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.05),
+    0 1px 3px color-mix(in oklab, var(--nav-cool) 18%, transparent);
 }
 
-/* Reveal on scroll */
 .reveal {
   opacity: 0;
   transform: translateY(8px);
   transition: opacity 600ms ease, transform 600ms ease;
 }
-
 .reveal.in-view {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Motion safety */
 @media (prefers-reduced-motion: reduce) {
-  .accent-underline {
-    transition: none;
-    background-size: 100% 100%;
-  }
   .reveal {
     opacity: 1;
     transform: none;
     transition: none;
   }
-  .exp-card,
-  .exp-card:hover {
+  .exp-item:hover .exp-dot,
+  .exp-item:has(.exp-card:hover) .exp-dot {
     transition: none;
     transform: none;
+    box-shadow: none;
   }
-  .exp-card:hover .exp-dot {
-    transform: none;
-    box-shadow:
-      0 0 0 4px color-mix(in oklab, var(--nav-cool) 25%, transparent);
-  }
+}
+
+.exp-header { 
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.exp-lead {
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: none;   
+  text-align: left;
+}
+
+.exp-section p,
+.exp-section li,
+.exp-section .exp-meta,
+.exp-section .exp-card-title,
+.exp-section .exp-subheading,
+.exp-section .exp-callout p {
+  font-size: 16px;
+}
+
+.exp-title {
+  font-family: "Libertinus Serif Display", system-ui;
+  font-size: 32px;
+  line-height: 1.2;
+}
+.exp-callout {
+  margin: 24px 0 0 0;  
+  padding: 0;           
+  background: transparent;
+  border: none;         
+  box-shadow: none;     
+}
+
+.exp-callout blockquote {
+  margin: 0;            
+  padding: 0;
+}
+
+.exp-callout p {
+  font-size: 16px;     
+  line-height: 1.6;
+  font-style: italic;  
+  color: inherit;      
+  text-align: left;    
 }

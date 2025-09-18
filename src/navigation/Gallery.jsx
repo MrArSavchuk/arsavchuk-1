@@ -124,7 +124,6 @@ function Carousel({ items, intervalMs = 3500 }) {
               }}>
                 <span className="hero-kicker">{p.tagline}</span>
                 <h3 className="hero-title">{p.title}</h3>
-                <span className="hero-note">Swipe / click arrows</span>
               </div>
             </div>
           ))}

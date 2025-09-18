@@ -1,7 +1,17 @@
 import React, { useEffect } from "react";
 
+/**
+ * Services (Experience)
+ * - Left-aligned, consistent typography (section base = 1.6em)
+ * - Minimal icons before job titles (💻, 📈, ⚙️)
+ * - Numbers auto-highlighted (<strong.num>) for years and percentages
+ * - Subtle reveal-on-scroll (IntersectionObserver) with prefers-reduced-motion support
+ * - Final statement as a clean callout card (blockquote)
+ */
+
 const jobs = [
   {
+    icon: "💻",
     title: "Front-End Developer",
     company: "ADVIS LLC",
     dates: "2019–2022 · Remote",
@@ -14,6 +24,7 @@ const jobs = [
     ]
   },
   {
+    icon: "📈",
     title: "Business Manager",
     company: "KrepMaster LLC",
     dates: "2017–2018 · Moscow, Russia",
@@ -25,6 +36,7 @@ const jobs = [
     ]
   },
   {
+    icon: "⚙️",
     title: "Operations Manager",
     company: "Mornefteservice LLC",
     dates: "2015–2017 · Arkhangelsk, Russia",
@@ -42,12 +54,28 @@ const extra = [
   "Maintained a strong emphasis on user-friendly, modern, and accessible design across all projects."
 ];
 
+/** Wrap numbers (years, percents, plain numbers) in <strong class="num"> */
+function highlightNumbers(text) {
+  const regex = /(\b\d{4}\b|\b\d[\d.,]*(?:%|k|K|m|M)?\b)/g;
+  const parts = String(text).split(regex);
+  return parts.map((part, i) => {
+    if (regex.test(part)) {
+      return (
+        <strong key={i} className="num">
+          {part}
+        </strong>
+      );
+    }
+    return <React.Fragment key={i}>{part}</React.Fragment>;
+  });
+}
+
 export default function Services() {
   useEffect(() => {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const elements = document.querySelectorAll(".reveal");
+    const els = document.querySelectorAll(".reveal");
     if (reduceMotion) {
-      elements.forEach((el) => el.classList.add("in-view"));
+      els.forEach((el) => el.classList.add("in-view"));
       return;
     }
     const io = new IntersectionObserver(
@@ -61,16 +89,16 @@ export default function Services() {
       },
       { rootMargin: "0px 0px -10% 0px", threshold: 0.1 }
     );
-    elements.forEach((el) => io.observe(el));
+    els.forEach((el) => io.observe(el));
     return () => io.disconnect();
   }, []);
 
   return (
     <section id="experience" className="exp-section">
       <header className="exp-header reveal">
-        <h2 className="exp-title">
-          <span className="accent-underline">Experience</span>
-        </h2>
+        {/* Title: 2em and custom font via CSS */}
+        <h2 className="exp-title">Experience</h2>
+
         <p className="exp-lead">
           A reverse-chronological story of how I grew from business-facing operations to a front-end developer building fast, accessible, and scalable products.
         </p>
@@ -81,17 +109,20 @@ export default function Services() {
 
       <div className="exp-timeline">
         {jobs.map((job, idx) => (
-          <article key={idx} className="exp-item exp-card reveal">
+          <article key={idx} className="exp-item reveal">
             <div className="exp-dot" aria-hidden="true" />
-            <h3 className="exp-card-title">
-              {job.title} — <span className="exp-company">{job.company}</span>
-            </h3>
-            <div className="exp-meta">{job.dates}</div>
-            <ul className="exp-list">
-              {job.bullets.map((b, i) => (
-                <li key={i}>{b}</li>
-              ))}
-            </ul>
+            <div className="exp-card">
+              <h3 className="exp-card-title">
+                <span className="exp-icon" aria-hidden="true">{job.icon}</span>
+                {job.title} — <span className="exp-company">{job.company}</span>
+              </h3>
+              <div className="exp-meta">{highlightNumbers(job.dates)}</div>
+              <ul className="exp-list">
+                {job.bullets.map((b, i) => (
+                  <li key={i}>{highlightNumbers(b)}</li>
+                ))}
+              </ul>
+            </div>
           </article>
         ))}
       </div>
@@ -103,10 +134,12 @@ export default function Services() {
             <li key={i}>{item}</li>
           ))}
         </ul>
-        <p className="exp-today">
-          ✨ Today, I focus on building scalable, high-performance front-end solutions that combine technical expertise with clean, user-centered design. 
-          This is not just my work — it is my passion for making technology feel effortless and impactful for people.
-        </p>
+
+        <figure className="exp-callout">
+          <blockquote>
+            <p>“I build scalable, high-performance front-end solutions that feel effortless and impactful for people.”</p>
+          </blockquote>
+        </figure>
       </section>
     </section>
   );
