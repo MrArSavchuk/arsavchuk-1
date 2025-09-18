@@ -1,12 +1,54 @@
-# React + Vite
+# 🌐 Artemiy Savchuk Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A personal portfolio website created to showcase my projects, skills, and contact information.  
+The project is built with **React (Vite)** and styled with **CSS**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Technologies
+- [React](https://reactjs.org/) (Vite)
+- HTML5
+- CSS3
+- JavaScript (ES6+)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## ✨ Features
+- 📄 Resume section  
+- 💼 Projects showcase  
+- 📱 Responsive design (works on desktop and mobile)  
+- 📬 Contact information  
+
+---
+
+## 📦 Installation & Setup
+Clone the repository and install dependencies:
+
+```bash
+git clone https://github.com/MrArSavchuk/arsavchuk-1.git
+cd arsavchuk-1
+npm install
+npm run dev
+```
+
+---
+
+## 🌍 Deployment
+🔗 [GitHub Pages link](https://mrarsavchuk.github.io/arsavchuk-1/)  
+
+---
+
+## 📌 Project Status
+✅ Ready to use (works, improvements planned).
+
+---
+
+## 👨‍💻 Author
+**Artemiy Savchuk**  
+[GitHub](https://github.com/MrArSavchuk) 
+
+---
+
+## 📜 License
+This project is licensed under the **MIT License**.  
+You are free to use and modify the code, while keeping the author attribution.
