@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./FirstPage.css";
 
-import image from "../assets/employee.jpg";
+import image from "../assets/employee.jpeg";
 import icon_github from "../assets/icon_github.png";
 import icon_lin from "../assets/icon_lin.png";
 import icon_mail from "../assets/icon_mail.jpg";
@@ -75,12 +75,12 @@ function FirstPage() {
           {/* CV → download from /public */}
           {/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */}
           <a
-            href="/Artem_Savchuk_Resume.doc"
+            href="/Artem_Savchuk_Resume.docx"
             target="_blank"
             className="icon-link"
-            title="Download CV (.doc)"
+            title="Download CV (.docx)"
           >
-            <img src={icon_cv} alt="Download CV (.doc)" />
+            <img src={icon_cv} alt="Download CV (.docx)" />
           </a>
 
 

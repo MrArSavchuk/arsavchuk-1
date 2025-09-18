@@ -48,7 +48,7 @@ function ContactMe() {
     const EMAIL = "artem_savchuk@icloud.com";
     const PHONE = "+1 (347) 330-0344";
     const CITY = "Erie, PA";
-    const RESUME_URL = "/Artem_Savchuk_Resume.doc";
+    const RESUME_URL = "/Artem_Savchuk_Resume.docx";
 
     const [copied, setCopied] = useState({ email: false, phone: false });
 
@@ -79,7 +79,7 @@ function ContactMe() {
                     <p>I’ll get back to you soon. Meanwhile, feel free to download my resume.</p>
                     <div className="success-actions">
                         <a className="btn" href={RESUME_URL} download>
-                            <IconDownload /> Download Resume (.doc)
+                            <IconDownload /> Download Resume (.docx)
                         </a>
                         <button className="btn btn-ghost" onClick={() => window.location.reload()}>
                             Send another message
@@ -139,7 +139,7 @@ function ContactMe() {
                     </div>
 
                     <a className="btn download reveal" href={RESUME_URL} download>
-                        <IconDownload /> Download Resume (.doc)
+                        <IconDownload /> Download Resume (.docx)
                     </a>
                 </aside>
 
