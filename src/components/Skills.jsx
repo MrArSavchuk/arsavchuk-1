@@ -1,10 +1,12 @@
 import React, { useEffect, useRef } from "react";
-import "./Skills.css";
+import "../styles/Skills.css";
+import { info as defaultInfo, skills as defaultSkills } from "../data/dataSkills";
 
-export default function Skills({ info = [], skills = [] }) {
+export default function Skills({ info = defaultInfo, skills = defaultSkills }) {
   const rootRef = useRef(null);
 
   useEffect(() => {
+    if (!rootRef.current) return;
     const bars = rootRef.current.querySelectorAll(".bar-fill");
     const io = new IntersectionObserver(
       (entries) => {
@@ -46,8 +48,8 @@ export default function Skills({ info = [], skills = [] }) {
               className="bar-track"
               role="progressbar"
               aria-valuenow={level}
-              aria-valuemin="0"
-              aria-valuemax="100"
+              aria-valuemin={0}
+              aria-valuemax={100}
             >
               <span className="bar-fill" data-target={level} />
             </div>

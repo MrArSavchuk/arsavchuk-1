@@ -1,60 +1,6 @@
 import React, { useEffect } from "react";
+import { jobs, extra } from "../data/dataJobs";
 
-/**
- * Services (Experience)
- * - Left-aligned, consistent typography (section base = 1.6em)
- * - Minimal icons before job titles (💻, 📈, ⚙️)
- * - Numbers auto-highlighted (<strong.num>) for years and percentages
- * - Subtle reveal-on-scroll (IntersectionObserver) with prefers-reduced-motion support
- * - Final statement as a clean callout card (blockquote)
- */
-
-const jobs = [
-  {
-    icon: "💻",
-    title: "Front-End Developer",
-    company: "ADVIS LLC",
-    dates: "2019–2022 · Remote",
-    bullets: [
-      "Built and launched modern web applications and marketing websites using React and Redux.",
-      "Designed responsive, accessible interfaces (WCAG 2.1, mobile-first).",
-      "Improved performance through code-splitting and lazy loading, reducing load times by 40%.",
-      "Delivered interactive landing pages for marketing campaigns, increasing conversion rates by 25%.",
-      "Streamlined deployment workflows with GitHub, accelerating release cycles by 30%."
-    ]
-  },
-  {
-    icon: "📈",
-    title: "Business Manager",
-    company: "KrepMaster LLC",
-    dates: "2017–2018 · Moscow, Russia",
-    bullets: [
-      "Contributed to the redesign of the company’s e-commerce platform with a focus on UX/UI.",
-      "Collaborated with designers and developers to improve navigation and user flow.",
-      "Simplified checkout process and implemented new design elements, boosting user retention.",
-      "Supported integration of analytics to better track customer behavior."
-    ]
-  },
-  {
-    icon: "⚙️",
-    title: "Operations Manager",
-    company: "Mornefteservice LLC",
-    dates: "2015–2017 · Arkhangelsk, Russia",
-    bullets: [
-      "Designed and implemented internal analytics dashboards to improve operational visibility.",
-      "Partnered with IT teams to optimize and modernize employee-facing web portals.",
-      "Advocated for usability improvements to enhance day-to-day workflows."
-    ]
-  }
-];
-
-const extra = [
-  "Assisted in UI adjustments for banking and insurance digital platforms (Rosgosstrakh Bank, Soglasie Insurance).",
-  "Built a personal portfolio website and several demo projects (e-commerce mock platform, analytics dashboard, open-source contributions).",
-  "Maintained a strong emphasis on user-friendly, modern, and accessible design across all projects."
-];
-
-/** Wrap numbers (years, percents, plain numbers) in <strong class="num"> */
 function highlightNumbers(text) {
   const regex = /(\b\d{4}\b|\b\d[\d.,]*(?:%|k|K|m|M)?\b)/g;
   const parts = String(text).split(regex);
@@ -96,9 +42,7 @@ export default function Services() {
   return (
     <section id="experience" className="exp-section">
       <header className="exp-header reveal">
-        {/* Title: 2em and custom font via CSS */}
         <h2 className="exp-title">Experience</h2>
-
         <p className="exp-lead">
           A reverse-chronological story of how I grew from business-facing operations to a front-end developer building fast, accessible, and scalable products.
         </p>

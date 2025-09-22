@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import './App.css';
+import './styles/App.css';
 import { BrowserRouter as Router, Routes, Route, NavLink, Link } from "react-router-dom";
 import About from './navigation/About';
 import Services from './navigation/Services';
@@ -42,7 +42,6 @@ function App() {
             <span className="bar" />
           </button>
 
-          {/* Ссылки */}
           <div id="nav-links" className={`nav-links ${menuOpen ? "open" : ""}`}>
             <NavLink to="/" onClick={close} className={({ isActive }) => isActive ? "link pages active" : "link pages"} end>
               Home

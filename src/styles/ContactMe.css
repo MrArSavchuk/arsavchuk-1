@@ -252,3 +252,7 @@ form {
         flex-direction: column;
     }
 }
+
+.c-icon img { width: 45px; height: 45px; display: block; }
+.btn .btn-icon { margin-right: .5rem; vertical-align: middle; }
+.success-icon img { width: 25px; height: 25px; }
