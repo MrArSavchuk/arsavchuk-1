@@ -1,13 +1,11 @@
-const IMG = {
-    table1: new URL("../assets/TableTime.png", import.meta.url).href,
-    table2: new URL("../assets/TableTime2.png", import.meta.url).href,
-    cine1: new URL("../assets/Cinescope_pht.png", import.meta.url).href,
-    cine2: new URL("../assets/Cinescope_pht2.png", import.meta.url).href,
-    fin1: new URL("../assets/fintrack_pht.png", import.meta.url).href,
-    fin2: new URL("../assets/fintrack_pht2.png", import.meta.url).href,
-    dish1: new URL("../assets/Choose_You_Dish_pht.png", import.meta.url).href,
-    dish2: new URL("../assets/Choose_You_Dish_pht2.png", import.meta.url).href,
-};
+import table1 from "../assets/TableTime.png";
+import table2 from "../assets/TableTime2.png";
+import cine1 from "../assets/Cinescope_pht.png";
+import cine2 from "../assets/Cinescope_pht2.png";
+import fin1 from "../assets/fintrack_pht.png";
+import fin2 from "../assets/fintrack_pht2.png";
+import dish1 from "../assets/Choose_You_Dish_pht.png";
+import dish2 from "../assets/Choose_You_Dish_pht2.png";
 
 export const projects = [
     {
@@ -24,7 +22,7 @@ export const projects = [
             live: "https://tabletime123.netlify.app",
             github: "https://github.com/MrArSavchuk/TableTime",
         },
-        img: [IMG.table1, IMG.table2],
+        img: [table1, table2],
         tech: ["React", "CSS Modules", "React Hook Form", "Mock API"],
         color: "#A56C53",
     },
@@ -38,7 +36,7 @@ export const projects = [
             live: "https://cinemascope123.netlify.app",
             github: "https://github.com/MrArSavchuk/Cinemascope",
         },
-        img: [IMG.cine1, IMG.cine2],
+        img: [cine1, cine2],
         tech: ["React", "Axios", "Styled Components", "TMDB API"],
         color: "#3B82F6",
     },
@@ -52,7 +50,7 @@ export const projects = [
             live: "https://fin-track123.netlify.app",
             github: "https://github.com/MrArSavchuk/fintrack",
         },
-        img: [IMG.fin1, IMG.fin2],
+        img: [fin1, fin2],
         tech: ["React", "Chart.js", "CSS"],
         color: "#F59E0B",
     },
@@ -66,7 +64,7 @@ export const projects = [
             live: "https://chooseyoudish.netlify.app",
             github: "https://github.com/MrArSavchuk/Choose_Your_Dish",
         },
-        img: [IMG.dish1, IMG.dish2],
+        img: [dish1, dish2],
         tech: ["React", "React Hook Form", "CSS", "API"],
         color: "#06B6D4",
     },
