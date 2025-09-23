@@ -1,5 +1,6 @@
 import diplomImg from "../assets/diplom.png";
 import certificateHtmlImg from "../assets/sertificatehtml.png";
+import certificateReactReduxlImg from "../assets/sertificate_React_Redux.png";
 import placeholderImg from "../assets/placeholder.png";
 
 export const certs = [
@@ -21,11 +22,11 @@ export const certs = [
     },
     {
         id: 3,
-        title: "...",
-        meta: "Stand by",
-        info: "Coming soon",
-        img: placeholderImg,
-        alt: "Placeholder certificate",
+        title: "Certificate",
+        meta: "Montreal, Canada",
+        info: "React, Redux",
+        img: certificateReactReduxlImg,
+        alt: "Certificate in React, Redux",
     },
     {
         id: 4,
