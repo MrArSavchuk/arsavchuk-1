@@ -41,7 +41,11 @@ function FirstPage() {
         </p>
 
         <footer className="block_links">
-          <a href="#" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+          <a href="https://www.linkedin.com/in/artemii-savchuk/" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          title="LinkedIn"
+          >
             <img src={icon_lin} alt="LinkedIn" />
           </a>
 
