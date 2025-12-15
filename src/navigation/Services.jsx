@@ -42,7 +42,7 @@ export default function Services() {
   return (
     <section id="experience" className="exp-section">
       <header className="exp-header reveal">
-        <h2 className="exp-title">Experience</h2>
+        <h1 className="exp-title">Experience</h1>
         <p className="exp-lead">
           A reverse-chronological story of how I grew from business-facing operations to a front-end developer building fast, accessible, and scalable products.
         </p>
